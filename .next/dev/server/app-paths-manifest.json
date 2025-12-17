@@ -1,0 +1,13 @@
+{
+  "/api/auth/logout/route": "app/api/auth/logout/route.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/cameraman/dashboard/page": "app/cameraman/dashboard/page.js",
+  "/cameraman/events/page": "app/cameraman/events/page.js",
+  "/cameraman/event/[id]/page": "app/cameraman/event/[id]/page.js",
+  "/cameraman/notifications/page": "app/cameraman/notifications/page.js",
+  "/cameraman/profile/page": "app/cameraman/profile/page.js"
+}
