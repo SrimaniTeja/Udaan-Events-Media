@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createSession } from "@/lib/auth/session";
-import { findUserByEmail } from "@/lib/mock/store";
+import { getDbUserByEmail } from "@/lib/db/store";
+import bcrypt from "bcryptjs";
 
 export async function POST(req: Request) {
   const body = (await req.json().catch(() => null)) as
@@ -10,16 +11,26 @@ export async function POST(req: Request) {
   const email = body?.email?.trim() ?? "";
   const password = body?.password ?? "";
 
-  const user = findUserByEmail(email);
-  if (!user || user.passwordHash !== password) {
+  const user = await getDbUserByEmail(email);
+  if (!user) {
     return NextResponse.json(
       { error: "Invalid email or password" },
       { status: 401 },
     );
   }
 
-  await createSession({ id: user.id, name: user.name, email: user.email, role: user.role });
-  return NextResponse.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+  const ok = await bcrypt.compare(password, user.passwordHash);
+  if (!ok) {
+    return NextResponse.json(
+      { error: "Invalid email or password" },
+      { status: 401 },
+    );
+  }
+
+  await createSession({ id: user.id, name: user.name, email: user.email, role: user.role as any });
+  return NextResponse.json({
+    user: { id: user.id, name: user.name, email: user.email, role: user.role },
+  });
 }
 
 

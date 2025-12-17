@@ -53,13 +53,13 @@ export function NotificationsList() {
               <div className="min-w-0">
                 <div className="text-sm font-medium">
                   {n.title}{" "}
-                  {n.readAt ? (
+                  {n.isRead ? (
                     <span className="ml-2 text-xs text-muted-foreground">(read)</span>
                   ) : (
                     <span className="ml-2 text-xs text-primary">(new)</span>
                   )}
                 </div>
-                <div className="mt-1 text-sm text-muted-foreground">{n.body}</div>
+                <div className="mt-1 text-sm text-muted-foreground">{n.message}</div>
                 {n.eventId ? (
                   <div className="mt-2 text-xs text-muted-foreground">
                     Event:{" "}
@@ -69,7 +69,7 @@ export function NotificationsList() {
                   </div>
                 ) : null}
               </div>
-              {!n.readAt ? (
+              {!n.isRead ? (
                 <Button variant="secondary" onClick={() => void markRead(n.id)}>
                   Mark read
                 </Button>

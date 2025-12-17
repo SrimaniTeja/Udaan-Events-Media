@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import type { EventStatus } from "@/lib/types";
 import { getSessionUser } from "@/lib/auth/session";
-import { createNotification, getEventById, listFilesForEvent, setEditor, setEditorFree, transitionEvent } from "@/lib/mock/store";
+import { createNotification, getEventById, listFilesForEvent, setEditor, setEditorFree, transitionEvent } from "@/lib/db/store";
 import { canTransition } from "@/lib/workflow";
 
 function canAccessEvent(params: {
@@ -24,13 +24,13 @@ export async function GET(
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const event = getEventById(id);
+  const event = await getEventById(id);
   if (!event) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   if (!canAccessEvent({ role: user.role, userId: user.id, event }))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  const files = listFilesForEvent(id);
+  const files = await listFilesForEvent(id);
   return NextResponse.json({ event, files });
 }
 
@@ -42,7 +42,7 @@ export async function PATCH(
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const event = getEventById(id);
+  const event = await getEventById(id);
   if (!event) return NextResponse.json({ error: "Not found" }, { status: 404 });
   if (!canAccessEvent({ role: user.role, userId: user.id, event }))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -56,18 +56,18 @@ export async function PATCH(
       return NextResponse.json({ error: "Only admin can assign editor" }, { status: 403 });
     const prevEditorId = event.editorId;
     const nextEditorId = body.editorId ?? null;
-    setEditor(id, nextEditorId);
+    await setEditor(id, nextEditorId);
 
-    // Update free/busy status in mock store and notify assigned editor.
-    if (prevEditorId && prevEditorId !== nextEditorId) setEditorFree(prevEditorId, true);
+    // Update free/busy status and notify assigned editor.
+    if (prevEditorId && prevEditorId !== nextEditorId) await setEditorFree(prevEditorId, true);
     if (nextEditorId) {
-      setEditorFree(nextEditorId, false);
-      createNotification({
+      await setEditorFree(nextEditorId, false);
+      await createNotification({
         userId: nextEditorId,
         type: "EVENT_ASSIGNED",
         eventId: id,
         title: "Event assigned to you",
-        body: `You have been assigned as editor for "${event.name}".`,
+        message: `You have been assigned as editor for "${event.name}".`,
       });
     }
   }
@@ -92,23 +92,23 @@ export async function PATCH(
       );
     }
 
-    const updated = transitionEvent(id, nextStatus);
+    const updated = await transitionEvent(id, nextStatus);
 
     // When completed, free up editor for future auto-assignment and notify admin.
     if (nextStatus === "COMPLETED") {
-      if (event.editorId) setEditorFree(event.editorId, true);
-      createNotification({
+      if (event.editorId) await setEditorFree(event.editorId, true);
+      await createNotification({
         userId: "u_admin_1",
         type: "COMPLETED",
         eventId: id,
         title: "Event completed",
-        body: `"${event.name}" has been marked as COMPLETED.`,
+        message: `"${event.name}" has been marked as COMPLETED.`,
       });
     }
     return NextResponse.json({ event: updated });
   }
 
-  return NextResponse.json({ event: getEventById(id) });
+  return NextResponse.json({ event: await getEventById(id) });
 }
 
 

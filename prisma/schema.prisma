@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String
+  isFree       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  // Relations
+  cameraEvents Event[]  @relation("CameramanEvents")
+  editEvents   Event[]  @relation("EditorEvents")
+  uploads      File[]   @relation("UploaderFiles")
+  notifications Notification[]
+}
+
+model Event {
+  id            String   @id @default(cuid())
+  name          String
+  date          DateTime
+  cameramanId   String
+  editorId      String?
+  status        String
+  driveRootId   String?
+  driveRawId    String?
+  driveEditedId String?
+  driveFinalId  String?
+  createdAt     DateTime @default(now())
+
+  // Relations
+  cameraman User  @relation("CameramanEvents", fields: [cameramanId], references: [id])
+  editor    User? @relation("EditorEvents", fields: [editorId], references: [id])
+  files     File[]
+  notifications Notification[]
+
+  @@index([cameramanId])
+  @@index([editorId])
+  @@index([status])
+}
+
+model File {
+  id          String   @id @default(cuid())
+  eventId     String
+  fileType    String
+  name        String
+  driveFileId String?
+  uploaderId  String
+  size        Int
+  createdAt   DateTime @default(now())
+
+  // Relations
+  event    Event @relation(fields: [eventId], references: [id])
+  uploader User  @relation("UploaderFiles", fields: [uploaderId], references: [id])
+
+  @@index([eventId])
+  @@index([uploaderId])
+  @@index([fileType])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  eventId   String?
+  title     String
+  message   String
+  type      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  user  User  @relation(fields: [userId], references: [id])
+  event Event? @relation(fields: [eventId], references: [id])
+
+  @@index([userId])
+  @@index([eventId])
+  @@index([isRead])
+}
+
+

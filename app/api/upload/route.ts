@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth/session";
-import { addFile, autoAssignFreeEditor, createNotification, getEventById, transitionEvent } from "@/lib/mock/store";
+import { addFile, autoAssignFreeEditor, createNotification, getEventById, transitionEvent } from "@/lib/db/store";
 import { canUploadFile } from "@/lib/workflow";
 import type { FileType } from "@/lib/types";
 
@@ -12,7 +12,7 @@ export async function POST(req: Request) {
   const eventId = searchParams.get("eventId") ?? "";
   const fileType = (searchParams.get("fileType") ?? "RAW") as FileType;
 
-  const event = getEventById(eventId);
+  const event = await getEventById(eventId);
   if (!event) return NextResponse.json({ error: "Invalid eventId" }, { status: 400 });
 
   // Assignment checks
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
   for (const part of incoming) {
     if (!(part instanceof File)) continue;
     created.push(
-      addFile({
+      await addFile({
         eventId,
         uploadedBy: user.id,
         fileType,
@@ -51,29 +51,29 @@ export async function POST(req: Request) {
   // Minimal workflow updates (Drive integration will replace this later)
   try {
     if (fileType === "RAW" && event.status === "CREATED") {
-      transitionEvent(eventId, "RAW_UPLOADED");
+      await transitionEvent(eventId, "RAW_UPLOADED");
       // Auto-assign a free editor (if available) and notify them.
-      const updated = autoAssignFreeEditor(eventId) ?? event;
+      const updated = (await autoAssignFreeEditor(eventId)) ?? event;
       if (updated.editorId) {
-        transitionEvent(eventId, "ASSIGNED");
-        createNotification({
+        await transitionEvent(eventId, "ASSIGNED");
+        await createNotification({
           userId: updated.editorId,
           type: "RAW_UPLOADED",
           eventId,
           title: "New RAW media available",
-          body: `RAW media has been uploaded for "${updated.name}". You can start editing now.`,
+          message: `RAW media has been uploaded for "${updated.name}". You can start editing now.`,
         });
       }
     }
     if (fileType === "FINAL" && (event.status === "ASSIGNED" || event.status === "EDITING")) {
-      transitionEvent(eventId, "FINAL_UPLOADED");
+      await transitionEvent(eventId, "FINAL_UPLOADED");
       if (event.cameramanId) {
-        createNotification({
+        await createNotification({
           userId: event.cameramanId,
           type: "FINAL_UPLOADED",
           eventId,
           title: "FINAL media uploaded",
-          body: `Editor uploaded FINAL output for "${event.name}".`,
+          message: `Editor uploaded FINAL output for "${event.name}".`,
         });
       }
     }

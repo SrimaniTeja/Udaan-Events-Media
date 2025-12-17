@@ -1,7 +1,155 @@
-[00:00:13.453] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:13.879] Server  LOG      ✓ Ready in 13.3s
-[00:00:17.759] Server  LOG      ○ Compiling /admin/dashboard ...
-[00:00:21.967] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:29.686] Browser DEBUG   TSS: Counted history being pushed
-[00:00:29.686] Browser DEBUG   TSS: Caught history
-[00:00:29.686] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
+[00:00:03.899] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:04.286] Server  LOG      ✓ Ready in 3.7s
+[00:00:11.975] Server  LOG      ○ Compiling /login ...
+[00:00:14.390] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:14.608] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="login/page...">
+          <SegmentTrieNode>
+          <LoginPage>
+            <Suspense fallback={<div>}>
+              <LoginClient>
+                <div className="min-h-dvh ...">
+                  <div className="mx-auto fl...">
+                    <div className="grid w-ful...">
+                      <div className="hidden md:...">
+                        <div>
+                        <h1>
+                        <p>
+                        <div className="mt-6 grid ...">
+                          <div className="rounded-2x...">
+                            <div>
+                            <div className="mt-2 flex ...">
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="2on2hd"
+                              >
++                               Admin
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="5tsbg2"
+                              >
++                               Cameraman
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="i0k9"
+                              >
++                               Editor
+                            ...
+                      <Card className="mx-auto w-...">
+                        <div className="rounded-2x...">
+                          <CardHeader>
+                          <CardContent>
+                            <div className="px-5 pb-5">
+                              <form className="grid gap-4" onSubmit={function onSubmit}>
+                                <div className="grid gap-2">
+                                  <label>
+                                  <Input value="admin@udaa..." onChange={function onChange} placeholder="you@compan..." ...>
+                                    <input
+                                      className="h-10 w-full rounded-xl border border-border bg-surface-2 px-3 text-sm..."
+                                      value="admin@udaan.local"
+                                      onChange={function onChange}
+                                      placeholder="you@company.com"
+                                      autoComplete="email"
+-                                     fdprocessedid="38btbn"
+                                    >
+                                <div className="grid gap-2">
+                                  <label>
+                                  <Input value="password" onChange={function onChange} placeholder="••••••••" ...>
+                                    <input
+                                      className="h-10 w-full rounded-xl border border-border bg-surface-2 px-3 text-sm..."
+                                      value="password"
+                                      onChange={function onChange}
+                                      placeholder="••••••••"
+                                      type="password"
+                                      autoComplete="current-password"
+-                                     fdprocessedid="sjsz5g"
+                                    >
+                                <Button type="submit" disabled={false}>
+                                  <button
+                                    className="inline-flex items-center justify-center gap-2 rounded-xl font-medium tr..."
+                                    type="submit"
+                                    disabled={false}
+-                                   fdprocessedid="rrxjj"
+                                  >
++                                   Sign in
+        ...
+      ...
+
+[00:01:54.290] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:00.297] Browser DEBUG   TSS: Counted history being pushed
+[00:02:00.298] Browser DEBUG   TSS: Caught history
+[00:02:00.298] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
+[00:02:01.452] Browser DEBUG   TSS: Counted history being pushed
+[00:02:01.452] Browser DEBUG   TSS: Caught history
+[00:02:01.452] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961695352}
+[00:02:08.422] Server  WARN    Error: Route "/admin/events/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:02:08.578] Browser DEBUG   TSS: Counted history being pushed
+[00:02:08.578] Browser DEBUG   TSS: Caught history
+[00:02:08.579] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961696509}
+[00:02:09.937] Browser DEBUG   TSS: Counted history being replaced
+[00:02:09.937] Browser DEBUG   TSS: Caught history
+[00:02:09.937] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961703634}
+[00:02:13.022] Browser DEBUG   TSS: Counted history being pushed
+[00:02:13.022] Browser DEBUG   TSS: Caught history
+[00:02:13.022] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961704983}
+[00:02:24.190] Server  WARN    Error: Route "/admin/events/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:02:24.375] Server  WARN    Error: Route "/admin/events/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:02:24.534] Browser DEBUG   TSS: Counted history being pushed
+[00:02:24.535] Browser DEBUG   TSS: Caught history
+[00:02:24.535] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961708069}
+[00:02:26.683] Browser DEBUG   TSS: Counted history being replaced
+[00:02:26.683] Browser DEBUG   TSS: Caught history
+[00:02:26.683] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961719593}
+[00:02:27.475] Browser DEBUG   TSS: Counted history being replaced
+[00:02:27.475] Browser DEBUG   TSS: Caught history
+[00:02:27.475] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961721742}
+[00:02:30.614] Browser DEBUG   TSS: Counted history being pushed
+[00:02:30.615] Browser DEBUG   TSS: Caught history
+[00:02:30.615] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":2,"lastTime":1765961721742}
+[00:02:36.000] Browser DEBUG   TSS: Counted history being pushed
+[00:02:36.001] Browser DEBUG   TSS: Caught history
+[00:02:36.001] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961725670}
+[00:03:16.977] Browser DEBUG   TSS: Counted history being replaced
+[00:03:16.977] Browser DEBUG   TSS: Caught history
+[00:03:16.977] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961731059}
+[00:03:45.966] Browser DEBUG   TSS: Counted history being replaced
+[00:03:45.966] Browser DEBUG   TSS: Caught history
+[00:03:45.966] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961771215}
+[00:03:58.974] Browser DEBUG   TSS: Counted history being replaced
+[00:03:58.974] Browser DEBUG   TSS: Caught history
+[00:03:58.974] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961800833}
+[00:04:00.012] Browser DEBUG   TSS: Counted history being replaced
+[00:04:00.012] Browser DEBUG   TSS: Caught history
+[00:04:00.012] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765961813833}
+[00:04:20.489] Server  ERROR    ⨯ InvariantError: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.
+[00:04:20.496] Server  ERROR    ⨯ InvariantError: Invariant: Expected clientReferenceManifest to be defined. This is a bug in Next.js.
+[00:04:23.533] Server  LOG      ○ Compiling /_error ...
+[00:04:27.914] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:32.971] Browser DEBUG   TSS: Counted history being replaced
+[00:04:32.971] Browser DEBUG   TSS: Caught history
+[00:04:32.972] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
+[00:05:26.962] Server  ERROR    ⨯ SyntaxError: Unexpected end of JSON input
+[00:05:29.718] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:37.764] Browser DEBUG   TSS: Counted history being replaced
+[00:13:37.764] Browser DEBUG   TSS: Caught history
+[00:13:37.764] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}

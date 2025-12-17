@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth/session";
-import { getEventById, getFileById } from "@/lib/mock/store";
+import { getEventById, getFileById } from "@/lib/db/store";
 
 export async function GET(req: Request) {
   const user = await getSessionUser();
@@ -10,10 +10,10 @@ export async function GET(req: Request) {
   const fileId = searchParams.get("fileId") ?? "";
   if (!fileId) return NextResponse.json({ error: "Missing fileId" }, { status: 400 });
 
-  const f = getFileById(fileId);
-  if (!f) return NextResponse.json({ error: "File not found (mock store)" }, { status: 404 });
+  const f = await getFileById(fileId);
+  if (!f) return NextResponse.json({ error: "File not found" }, { status: 404 });
 
-  const event = getEventById(f.eventId);
+  const event = await getEventById(f.eventId);
   if (!event) return NextResponse.json({ error: "Event not found" }, { status: 404 });
 
   const canAccess =

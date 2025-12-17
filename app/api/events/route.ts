@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth/session";
-import { createEvent, listEventsForUser } from "@/lib/mock/store";
+import { createEvent, listEventsForUser } from "@/lib/db/store";
 
 export async function GET() {
   const user = await getSessionUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  return NextResponse.json({ events: listEventsForUser(user) });
+  return NextResponse.json({ events: await listEventsForUser(user) });
 }
 
 export async function POST(req: Request) {
@@ -28,8 +28,10 @@ export async function POST(req: Request) {
   const editorId = body?.editorId ?? null;
 
   if (!name) return NextResponse.json({ error: "Event name is required" }, { status: 400 });
+  if (!cameramanId)
+    return NextResponse.json({ error: "Cameraman is required" }, { status: 400 });
 
-  const event = createEvent({ name, date, cameramanId, editorId });
+  const event = await createEvent({ name, date, cameramanId, editorId });
   return NextResponse.json({ event }, { status: 201 });
 }
 

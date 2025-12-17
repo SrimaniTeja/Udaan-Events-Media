@@ -1,5 +1,3 @@
-import type { UserRole } from "@/lib/types";
-
 export type NotificationType =
   | "EVENT_ASSIGNED"
   | "RAW_UPLOADED"
@@ -9,15 +7,12 @@ export type NotificationType =
 export type Notification = {
   id: string;
   userId: string;
-  title: string;
-  body: string;
-  type: NotificationType;
   eventId?: string;
-  createdAt: string;
-  readAt: string | null;
-  meta?: {
-    role?: UserRole;
-  };
+  title: string;
+  message: string;
+  type: NotificationType;
+  isRead: boolean;
+  createdAt: string; // ISO
 };
 
 
