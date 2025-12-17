@@ -6,15 +6,9 @@ Role-based portals (Admin / Cameraman / Editor) for managing event media workflo
 
 ### Prereqs
 - **Node.js**: v20.x
-- **PostgreSQL**: local install or via Docker
+- **PostgreSQL**: local install (Windows) or hosted Postgres (Neon/Supabase/Railway/etc)
 
-### 1) Start PostgreSQL (optional via Docker)
-
-```bash
-docker compose up -d
-```
-
-### 2) Configure environment
+### 1) Configure environment
 - Copy `env.example` → create a local `.env` file (or set env vars in your OS)
 - Set:
 
@@ -22,6 +16,10 @@ docker compose up -d
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/udaan_events_media?schema=public"
 AUTH_SECRET="replace-with-a-long-random-string"
 ```
+
+### 2) Make sure PostgreSQL is running
+- If using local PostgreSQL, confirm it’s reachable at `localhost:5432`
+- If using hosted PostgreSQL, use the provider connection string as `DATABASE_URL`
 
 ### 3) Run migrations + seed demo data
 
