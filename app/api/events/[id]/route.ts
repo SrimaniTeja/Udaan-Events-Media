@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import type { EventStatus } from "@/lib/types";
 import { getSessionUser } from "@/lib/auth/session";
-import { createNotification, getEventById, listFilesForEvent, setEditor, setEditorFree, transitionEvent } from "@/lib/db/store";
+import { createNotification, createNotificationsForRole, getEventById, listFilesForEvent, setEditor, setEditorFree, transitionEvent } from "@/lib/db/store";
 import { canTransition } from "@/lib/workflow";
 
 function canAccessEvent(params: {
@@ -97,8 +97,8 @@ export async function PATCH(
     // When completed, free up editor for future auto-assignment and notify admin.
     if (nextStatus === "COMPLETED") {
       if (event.editorId) await setEditorFree(event.editorId, true);
-      await createNotification({
-        userId: "u_admin_1",
+      await createNotificationsForRole({
+        role: "ADMIN",
         type: "COMPLETED",
         eventId: id,
         title: "Event completed",

@@ -7,17 +7,18 @@ import { EventTimeline } from "@/components/event/EventTimeline";
 import { FileDropzone } from "@/components/upload/FileDropzone";
 import { EventStatusActionButton } from "@/components/event/EventStatusActionButton";
 import { requireRole } from "@/lib/auth/requireRole";
-import { getEventById, listFilesForEvent } from "@/lib/mock/store";
+import { getEventById, listFilesForEvent } from "@/lib/db/store";
 import { formatBytes, formatDate } from "@/utils/format";
 
-export default async function EditorEventPage({ params }: { params: { id: string } }) {
+export default async function EditorEventPage({ params }: { params: Promise<{ id: string }> }) {
   const user = await requireRole("EDITOR");
-  const event = getEventById(params.id);
+  const { id } = await params;
+  const event = await getEventById(id);
   if (!event) notFound();
   if (event.editorId !== user.id) notFound();
 
-  const rawFiles = listFilesForEvent(event.id, "RAW");
-  const finalFiles = listFilesForEvent(event.id, "FINAL");
+  const rawFiles = await listFilesForEvent(event.id, "RAW");
+  const finalFiles = await listFilesForEvent(event.id, "FINAL");
 
   return (
     <div className="grid gap-6">

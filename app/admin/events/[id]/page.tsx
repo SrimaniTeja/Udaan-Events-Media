@@ -3,20 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/event/StatusBadge";
 import { EventTimeline } from "@/components/event/EventTimeline";
 import { requireRole } from "@/lib/auth/requireRole";
-import { getEventById, listFilesForEvent, listUsers } from "@/lib/mock/store";
+import { getEventById, listFilesForEvent, listUsers } from "@/lib/db/store";
 import { formatBytes, formatDate } from "@/utils/format";
 
 export default async function AdminEventDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   await requireRole("ADMIN");
-  const event = getEventById(params.id);
+  const { id } = await params;
+  const event = await getEventById(id);
   if (!event) notFound();
 
-  const files = listFilesForEvent(event.id);
-  const users = listUsers();
+  const files = await listFilesForEvent(event.id);
+  const users = await listUsers();
   const cameraman = users.find((u) => u.id === event.cameramanId) ?? null;
   const editor = users.find((u) => u.id === event.editorId) ?? null;
 

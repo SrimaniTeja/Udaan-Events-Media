@@ -1,12 +1,12 @@
 import "server-only";
 
-import type { EventStatus, FileType, SessionUser, UserRole } from "@/lib/types";
-import type { NotificationType } from "@/lib/notifications";
+import type { Event, EventStatus, FileType, MediaFile, SessionUser, User, UserRole } from "@/lib/types";
+import type { Notification, NotificationType } from "@/lib/notifications";
 import { prisma } from "@/lib/db/prisma";
 import { canTransition } from "@/lib/workflow";
 import { mapEvent, mapFile, mapNotification, mapSessionUser, mapUser } from "@/lib/db/mappers";
 
-export async function listUsers(role?: UserRole) {
+export async function listUsers(role?: UserRole): Promise<User[]> {
   const users = await prisma.user.findMany({
     where: role ? { role } : undefined,
     orderBy: { createdAt: "asc" },
@@ -14,7 +14,7 @@ export async function listUsers(role?: UserRole) {
   return users.map(mapUser);
 }
 
-export async function findUserByEmail(email: string) {
+export async function findUserByEmail(email: string): Promise<User | null> {
   const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
   return user ? mapUser(user) : null;
 }
@@ -23,7 +23,7 @@ export async function getDbUserByEmail(email: string) {
   return prisma.user.findUnique({ where: { email: email.toLowerCase() } });
 }
 
-export async function listEventsForUser(user: SessionUser) {
+export async function listEventsForUser(user: SessionUser): Promise<Event[]> {
   const where =
     user.role === "ADMIN"
       ? {}
@@ -35,12 +35,12 @@ export async function listEventsForUser(user: SessionUser) {
   return events.map(mapEvent);
 }
 
-export async function getEventById(eventId: string) {
+export async function getEventById(eventId: string): Promise<Event | null> {
   const event = await prisma.event.findUnique({ where: { id: eventId } });
   return event ? mapEvent(event) : null;
 }
 
-export async function listFilesForEvent(eventId: string, fileType?: FileType) {
+export async function listFilesForEvent(eventId: string, fileType?: FileType): Promise<MediaFile[]> {
   const files = await prisma.file.findMany({
     where: { eventId, ...(fileType ? { fileType } : {}) },
     orderBy: { createdAt: "desc" },
@@ -48,7 +48,7 @@ export async function listFilesForEvent(eventId: string, fileType?: FileType) {
   return files.map(mapFile);
 }
 
-export async function getFileById(fileId: string) {
+export async function getFileById(fileId: string): Promise<MediaFile | null> {
   const f = await prisma.file.findUnique({ where: { id: fileId } });
   return f ? mapFile(f) : null;
 }
@@ -58,7 +58,7 @@ export async function createEvent(input: {
   date: string;
   cameramanId: string;
   editorId: string | null;
-}) {
+}): Promise<Event> {
   const event = await prisma.event.create({
     data: {
       name: input.name,
@@ -71,8 +71,8 @@ export async function createEvent(input: {
   return mapEvent(event);
 }
 
-export async function transitionEvent(eventId: string, nextStatus: EventStatus) {
-  return prisma.$transaction(async (tx) => {
+export async function transitionEvent(eventId: string, nextStatus: EventStatus): Promise<Event | null> {
+  return prisma.$transaction(async (tx: any) => {
     const event = await tx.event.findUnique({ where: { id: eventId } });
     if (!event) return null;
 
@@ -88,7 +88,7 @@ export async function transitionEvent(eventId: string, nextStatus: EventStatus) 
   });
 }
 
-export async function setEditorFree(editorId: string, isFree: boolean) {
+export async function setEditorFree(editorId: string, isFree: boolean): Promise<User> {
   const u = await prisma.user.update({
     where: { id: editorId },
     data: { isFree },
@@ -96,7 +96,7 @@ export async function setEditorFree(editorId: string, isFree: boolean) {
   return mapUser(u);
 }
 
-export async function setEditor(eventId: string, editorId: string | null) {
+export async function setEditor(eventId: string, editorId: string | null): Promise<Event> {
   const event = await prisma.event.update({
     where: { id: eventId },
     data: { editorId },
@@ -104,8 +104,8 @@ export async function setEditor(eventId: string, editorId: string | null) {
   return mapEvent(event);
 }
 
-export async function autoAssignFreeEditor(eventId: string) {
-  return prisma.$transaction(async (tx) => {
+export async function autoAssignFreeEditor(eventId: string): Promise<Event | null> {
+  return prisma.$transaction(async (tx: any) => {
     const event = await tx.event.findUnique({ where: { id: eventId } });
     if (!event) return null;
     if (event.editorId) return mapEvent(event);
@@ -131,7 +131,7 @@ export async function addFile(params: {
   fileType: FileType;
   name: string;
   size: number;
-}) {
+}): Promise<MediaFile> {
   const f = await prisma.file.create({
     data: {
       eventId: params.eventId,
@@ -151,7 +151,7 @@ export async function createNotification(params: {
   message: string;
   type: NotificationType;
   eventId?: string;
-}) {
+}): Promise<Notification> {
   const n = await prisma.notification.create({
     data: {
       userId: params.userId,
@@ -164,7 +164,33 @@ export async function createNotification(params: {
   return mapNotification(n);
 }
 
-export async function listNotificationsForUser(userId: string) {
+export async function createNotificationsForRole(params: {
+  role: UserRole;
+  title: string;
+  message: string;
+  type: NotificationType;
+  eventId?: string;
+}): Promise<number> {
+  const users: { id: string }[] = await prisma.user.findMany({
+    where: { role: params.role },
+    select: { id: true },
+  });
+  if (users.length === 0) return 0;
+
+  await prisma.notification.createMany({
+    data: users.map((u) => ({
+      userId: u.id,
+      eventId: params.eventId,
+      title: params.title,
+      message: params.message,
+      type: params.type,
+      isRead: false,
+    })),
+  });
+  return users.length;
+}
+
+export async function listNotificationsForUser(userId: string): Promise<Notification[]> {
   const notifications = await prisma.notification.findMany({
     where: { userId },
     orderBy: { createdAt: "desc" },
@@ -172,7 +198,7 @@ export async function listNotificationsForUser(userId: string) {
   return notifications.map(mapNotification);
 }
 
-export async function markNotificationRead(notificationId: string, userId: string) {
+export async function markNotificationRead(notificationId: string, userId: string): Promise<Notification | null> {
   const existing = await prisma.notification.findUnique({ where: { id: notificationId } });
   if (!existing || existing.userId !== userId) return null;
 

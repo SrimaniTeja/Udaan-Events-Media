@@ -12,6 +12,7 @@ const demoAccounts: { label: string; email: string; role: Role }[] = [
   { label: "Admin", email: "admin@udaan.local", role: "ADMIN" },
   { label: "Cameraman", email: "cameraman@udaan.local", role: "CAMERAMAN" },
   { label: "Editor", email: "editor@udaan.local", role: "EDITOR" },
+  { label: "Editor Two", email: "editor2@udaan.local", role: "EDITOR" },
 ];
 
 export function LoginClient() {

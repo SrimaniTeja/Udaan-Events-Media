@@ -2,12 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { StatusBadge } from "@/components/event/StatusBadge";
 import { requireRole } from "@/lib/auth/requireRole";
-import { listEventsForUser } from "@/lib/mock/store";
+import { listEventsForUser } from "@/lib/db/store";
 import { formatDate } from "@/utils/format";
 
 export default async function EditorTasksPage() {
   const user = await requireRole("EDITOR");
-  const events = listEventsForUser(user)
+  const events = (await listEventsForUser(user))
     .filter((e) => e.status === "RAW_UPLOADED" || e.status === "ASSIGNED" || e.status === "EDITING" || e.status === "FINAL_UPLOADED")
     .sort((a, b) => b.date.localeCompare(a.date));
 

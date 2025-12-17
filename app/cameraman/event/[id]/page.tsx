@@ -4,16 +4,17 @@ import { StatusBadge } from "@/components/event/StatusBadge";
 import { FileDropzone } from "@/components/upload/FileDropzone";
 import { EventStatusActionButton } from "@/components/event/EventStatusActionButton";
 import { requireRole } from "@/lib/auth/requireRole";
-import { getEventById, listFilesForEvent } from "@/lib/mock/store";
+import { getEventById, listFilesForEvent } from "@/lib/db/store";
 import { formatBytes, formatDate } from "@/utils/format";
 
-export default async function CameramanEventPage({ params }: { params: { id: string } }) {
+export default async function CameramanEventPage({ params }: { params: Promise<{ id: string }> }) {
   const user = await requireRole("CAMERAMAN");
-  const event = getEventById(params.id);
+  const { id } = await params;
+  const event = await getEventById(id);
   if (!event) notFound();
   if (event.cameramanId !== user.id) notFound();
 
-  const rawFiles = listFilesForEvent(event.id, "RAW");
+  const rawFiles = await listFilesForEvent(event.id, "RAW");
 
   return (
     <div className="grid gap-6">

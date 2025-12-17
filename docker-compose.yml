@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    container_name: udaan-events-media-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: udaan_events_media
+    volumes:
+      - udaan_events_media_pg:/var/lib/postgresql/data
+
+volumes:
+  udaan_events_media_pg:
+
+

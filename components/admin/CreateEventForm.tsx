@@ -26,6 +26,12 @@ export function CreateEventForm({
     setBusy(true);
     setError(null);
 
+    if (!cameramanId) {
+      setBusy(false);
+      setError("Please assign a cameraman.");
+      return;
+    }
+
     const res = await fetch("/api/events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

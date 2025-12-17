@@ -2,12 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/event/StatusBadge";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { requireRole } from "@/lib/auth/requireRole";
-import { listEventsForUser } from "@/lib/mock/store";
+import { listEventsForUser } from "@/lib/db/store";
 import { formatDate } from "@/utils/format";
 
 export default async function AdminDashboardPage() {
   const user = await requireRole("ADMIN");
-  const events = listEventsForUser(user);
+  const events = await listEventsForUser(user);
 
   const counts = events.reduce<Record<string, number>>((acc, e) => {
     acc[e.status] = (acc[e.status] ?? 0) + 1;

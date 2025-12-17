@@ -1,5 +1,5 @@
 var R=require("../../../chunks/ssr/[turbopack]_runtime.js")("server/app/cameraman/events/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__002ccc57._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__7b8d1804._.js")
 R.c("server/chunks/ssr/_19ad70d3._.js")
 R.c("server/chunks/ssr/_d25179f9._.js")
 R.c("server/chunks/ssr/components_ui_Card_tsx_cd5d502a._.js")

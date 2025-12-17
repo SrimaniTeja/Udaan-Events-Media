@@ -1,12 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { requireRole } from "@/lib/auth/requireRole";
-import { listUsers } from "@/lib/mock/store";
+import { listUsers } from "@/lib/db/store";
 import { CreateEventForm } from "@/components/admin/CreateEventForm";
 
 export default async function AdminCreateEventPage() {
   await requireRole("ADMIN");
-  const cameramen = listUsers("CAMERAMAN");
-  const editors = listUsers("EDITOR");
+  const cameramen = await listUsers("CAMERAMAN");
+  const editors = await listUsers("EDITOR");
 
   return (
     <div className="grid gap-6">

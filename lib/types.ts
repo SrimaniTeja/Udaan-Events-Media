@@ -15,11 +15,6 @@ export interface User {
   name: string;
   email: string;
   role: UserRole;
-  /**
-   * In real implementation store a hash, not plaintext.
-   * This scaffold uses mock users and does not persist credentials.
-   */
-  passwordHash: string;
   isFree?: boolean; // editors only (for future automation)
 }
 

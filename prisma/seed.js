@@ -26,6 +26,12 @@ async function main() {
     create: { name: "Editor One", email: "editor@udaan.local", role: "EDITOR", passwordHash, isFree: true },
   });
 
+  const editor2 = await prisma.user.upsert({
+    where: { email: "editor2@udaan.local" },
+    update: { name: "Editor Two", role: "EDITOR", passwordHash, isFree: true },
+    create: { name: "Editor Two", email: "editor2@udaan.local", role: "EDITOR", passwordHash, isFree: true },
+  });
+
   // Seed a couple events if not present (by name + date heuristic)
   const now = new Date();
   const ev1Date = new Date(now);
@@ -79,7 +85,7 @@ async function main() {
     });
   }
 
-  console.log("Seed complete:", { admin: admin.email, cam: cam.email, editor: editor.email });
+  console.log("Seed complete:", { admin: admin.email, cam: cam.email, editor: editor.email, editor2: editor2.email });
 }
 
 main()
