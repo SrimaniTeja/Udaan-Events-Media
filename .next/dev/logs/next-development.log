@@ -1,54 +1,7 @@
-[00:00:11.446] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:11.763] Server  LOG      ✓ Ready in 11.2s
-[00:00:16.371] Server  LOG      ○ Compiling / ...
-[00:00:29.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:31.031] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:35.822] Browser DEBUG   TSS: Counted history being pushed
-[00:00:35.822] Browser DEBUG   TSS: Caught history
-[00:00:35.822] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
-[00:00:44.730] Browser DEBUG   TSS: Counted history being pushed
-[00:00:44.730] Browser DEBUG   TSS: Caught history
-[00:00:44.730] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765956975449}
-[00:00:52.392] Browser DEBUG   TSS: Counted history being pushed
-[00:00:52.392] Browser DEBUG   TSS: Caught history
-[00:00:52.392] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765956984354}
-[00:00:58.381] Server  WARN    Error: Route "/cameraman/event/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:00:58.541] Browser DEBUG   TSS: Counted history being pushed
-[00:00:58.541] Browser DEBUG   TSS: Caught history
-[00:00:58.542] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765956992019}
-[00:01:00.208] Browser DEBUG   TSS: Counted history being replaced
-[00:01:00.208] Browser DEBUG   TSS: Caught history
-[00:01:00.208] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765956998168}
-[00:01:01.784] Server  WARN    Error: Route "/cameraman/event/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:01:01.922] Browser DEBUG   TSS: Counted history being pushed
-[00:01:01.922] Browser DEBUG   TSS: Caught history
-[00:01:01.923] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765956999835}
-[00:01:03.140] Browser DEBUG   TSS: Counted history being replaced
-[00:01:03.140] Browser DEBUG   TSS: Caught history
-[00:01:03.140] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957001546}
-[00:01:06.646] Browser DEBUG   TSS: Counted history being pushed
-[00:01:06.646] Browser DEBUG   TSS: Caught history
-[00:01:06.646] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957002767}
-[00:01:09.780] Browser DEBUG   TSS: Counted history being pushed
-[00:01:09.780] Browser DEBUG   TSS: Caught history
-[00:01:09.780] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957006250}
-[00:01:11.208] Browser DEBUG   TSS: Counted history being pushed
-[00:01:11.208] Browser DEBUG   TSS: Caught history
-[00:01:11.208] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957009405}
-[00:01:15.924] Server  WARN    Error: Route "/cameraman/event/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:01:16.053] Browser DEBUG   TSS: Counted history being pushed
-[00:01:16.053] Browser DEBUG   TSS: Caught history
-[00:01:16.053] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957010830}
-[00:01:17.268] Browser DEBUG   TSS: Counted history being replaced
-[00:01:17.268] Browser DEBUG   TSS: Caught history
-[00:01:17.268] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957015680}
-[00:01:20.315] Browser DEBUG   TSS: Counted history being pushed
-[00:01:20.315] Browser DEBUG   TSS: Caught history
-[00:01:20.315] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957016884}
-[00:01:22.653] Server  WARN    Error: Route "/cameraman/event/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-[00:01:22.793] Browser DEBUG   TSS: Counted history being pushed
-[00:01:22.793] Browser DEBUG   TSS: Caught history
-[00:01:22.793] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957019938}
-[00:01:23.944] Browser DEBUG   TSS: Counted history being replaced
-[00:01:23.944] Browser DEBUG   TSS: Caught history
-[00:01:23.944] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765957022418}
+[00:00:13.453] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:13.879] Server  LOG      ✓ Ready in 13.3s
+[00:00:17.759] Server  LOG      ○ Compiling /admin/dashboard ...
+[00:00:21.967] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:29.686] Browser DEBUG   TSS: Counted history being pushed
+[00:00:29.686] Browser DEBUG   TSS: Caught history
+[00:00:29.686] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}

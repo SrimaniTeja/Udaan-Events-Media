@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  /* Calm, cool palette (keep it tight: navy + slate + indigo + emerald) */
-  --background: #0b1220; /* deep navy */
-  --foreground: #e7eaf3; /* soft off-white */
-  --surface: #111b2e; /* cards / panels */
-  --surface-2: #0f172a; /* slightly deeper */
-  --border: rgba(148, 163, 184, 0.16); /* slate-400 @ 16% */
-  --muted: #9aa6bf; /* slate-ish */
-  --muted-foreground: #7c89a6;
-  --primary: #6366f1; /* indigo-500 */
-  --primary-foreground: #0b1220;
-  --success: #10b981; /* emerald-500 */
-  --warning: #f59e0b; /* amber-500 (used sparingly) */
+  /* Palette provided:
+     #222831 (bg) / #393E46 (surface) / #948979 (accent/muted) / #DFD0B8 (text) */
+  --background: #222831;
+  --foreground: #dfd0b8;
+  --surface: #393e46;
+  /* Derived from palette (still feels consistent, avoids introducing a 5th “new” color) */
+  --surface-2: color-mix(in oklab, var(--surface) 70%, var(--background));
+  --muted: #948979;
+  --muted-foreground: color-mix(in oklab, var(--foreground) 65%, var(--muted));
+  --border: color-mix(in oklab, var(--muted) 35%, transparent);
+  --primary: #948979;
+  --primary-foreground: #222831;
+  --success: #948979;
+  --warning: color-mix(in oklab, var(--muted) 70%, var(--foreground));
 }
 
 @theme inline {
@@ -33,9 +35,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Keep the same palette in dark mode (this app is intended as a dark dashboard). */
-    --background: #0b1220;
-    --foreground: #e7eaf3;
+    /* Keep the same palette in dark mode (dashboard is intentionally dark). */
+    --background: #222831;
+    --foreground: #dfd0b8;
   }
 }
 
