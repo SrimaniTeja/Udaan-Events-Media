@@ -1,100 +1,103 @@
-[00:00:02.978] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:03.349] Server  LOG      ✓ Ready in 2.9s
-[00:00:14.889] Server  LOG      ○ Compiling /unauthorized ...
-[00:00:16.477] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:21.251] Browser DEBUG   TSS: Counted history being pushed
-[00:00:21.252] Browser DEBUG   TSS: Caught history
-[00:00:21.252] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
-[00:00:23.069] Server  LOG     prisma:error "\nInvalid `prisma.event.findMany()` invocation:\n\n\nerror: Environment variable not found: DATABASE_URL.\n  -->  schema.prisma:7\n   | \n 6 |   provider = \"postgresql\"\n 7 |   url      = env(\"DATABASE_URL\")\n   | \n\nValidation Error Count: 1"
-[00:00:23.085] Server  ERROR    ⨯ PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
+[00:00:02.571] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:02.730] Server  LOG      ✓ Ready in 2.4s
+[00:00:05.815] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.008] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
 
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
 
-Validation Error Count: 1
-[00:00:23.204] Server  LOG     prisma:error "\nInvalid `prisma.event.findMany()` invocation:\n\n\nerror: Environment variable not found: DATABASE_URL.\n  -->  schema.prisma:7\n   | \n 6 |   provider = \"postgresql\"\n 7 |   url      = env(\"DATABASE_URL\")\n   | \n\nValidation Error Count: 1"
-[00:00:23.209] Server  ERROR    ⨯ PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
+%s%s https://react.dev/link/hydration-mismatch 
 
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/login?nex..." tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="login/page...">
+          <SegmentTrieNode>
+          <LoginPage>
+            <Suspense fallback={<div>}>
+              <LoginClient>
+                <div className="min-h-dvh ...">
+                  <div className="mx-auto fl...">
+                    <div className="grid w-ful...">
+                      <div className="hidden md:...">
+                        <div>
+                        <h1>
+                        <p>
+                        <div className="mt-6 grid ...">
+                          <div className="rounded-2x...">
+                            <div>
+                            <div className="mt-2 flex ...">
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="9nc4nm"
+                              >
++                               Admin
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="pblewd"
+                              >
++                               Cameraman
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="hd82lj"
+                              >
++                               Editor
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="tawrp"
+                              >
++                               Editor Two
+                            ...
+                      <Card className="mx-auto w-...">
+                        <div className="rounded-2x...">
+                          <CardHeader>
+                          <CardContent>
+                            <div className="px-5 pb-5">
+                              <form className="grid gap-4" onSubmit={function onSubmit}>
+                                <div className="grid gap-2">
+                                  <label>
+                                  <Input value="admin@udaa..." onChange={function onChange} placeholder="you@compan..." ...>
+                                    <input
+                                      className="h-10 w-full rounded-xl border border-border bg-surface-2 px-3 text-sm..."
+                                      value="admin@udaan.local"
+                                      onChange={function onChange}
+                                      placeholder="you@company.com"
+                                      autoComplete="email"
+-                                     fdprocessedid="85bvm"
+                                    >
+                                <div className="grid gap-2">
+                                  <label>
+                                  <Input value="password" onChange={function onChange} placeholder="••••••••" ...>
+                                    <input
+                                      className="h-10 w-full rounded-xl border border-border bg-surface-2 px-3 text-sm..."
+                                      value="password"
+                                      onChange={function onChange}
+                                      placeholder="••••••••"
+                                      type="password"
+                                      autoComplete="current-password"
+-                                     fdprocessedid="ojmqpx"
+                                    >
+                                <Button type="submit" disabled={false}>
+                                  <button
+                                    className="inline-flex items-center justify-center gap-2 rounded-xl font-medium tr..."
+                                    type="submit"
+                                    disabled={false}
+-                                   fdprocessedid="qjixr4"
+                                  >
++                                   Sign in
+        ...
+      ...
 
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
-
-Validation Error Count: 1
-[00:00:23.379] Browser DEBUG   TSS: Counted history being replaced
-[00:00:23.379] Browser DEBUG   TSS: Caught history
-[00:00:23.379] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765963559725}
-[00:00:23.379] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
-
-
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
-
-Validation Error Count: 1
-[00:00:30.703] Server  LOG     prisma:error "\nInvalid `prisma.event.findMany()` invocation:\n\n\nerror: Environment variable not found: DATABASE_URL.\n  -->  schema.prisma:7\n   | \n 6 |   provider = \"postgresql\"\n 7 |   url      = env(\"DATABASE_URL\")\n   | \n\nValidation Error Count: 1"
-[00:00:30.770] Server  ERROR    ⨯ PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
-
-
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
-
-Validation Error Count: 1
-[00:00:31.386] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:31.536] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
-
-
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
-
-Validation Error Count: 1
-[00:00:37.042] Server  LOG     prisma:error "\nInvalid `prisma.event.findMany()` invocation:\n\n\nerror: Environment variable not found: DATABASE_URL.\n  -->  schema.prisma:7\n   | \n 6 |   provider = \"postgresql\"\n 7 |   url      = env(\"DATABASE_URL\")\n   | \n\nValidation Error Count: 1"
-[00:00:37.061] Server  ERROR    ⨯ PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
-
-
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
-
-Validation Error Count: 1
-[00:00:37.605] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:37.739] Browser ERROR   uncaughtError: PrismaClientInitializationError: 
-Invalid `prisma.event.findMany()` invocation:
-
-
-error: Environment variable not found: DATABASE_URL.
-  -->  schema.prisma:7
-   | 
- 6 |   provider = "postgresql"
- 7 |   url      = env("DATABASE_URL")
-   | 
-
-Validation Error Count: 1
