@@ -1,19 +1,36 @@
-[00:00:02.932] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:03.243] Server  LOG      ✓ Ready in 2.8s
-[00:01:10.054] Server  LOG      ○ Compiling /admin/dashboard ...
-[00:01:36.698] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:45.934] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
-[00:01:47.232] Server  LOG      ○ Compiling /api/auth/logout ...
-[00:01:50.994] Server  LOG      ○ Compiling /login ...
-[00:02:10.910] Server  LOG      ○ Compiling /api/auth/login ...
-[00:02:50.924] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:57.570] Server  LOG      ○ Compiling /admin/events/new ...
-[00:02:59.296] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
-[00:03:19.836] Server  LOG      ○ Compiling /api/events ...
-[00:04:13.757] Server  LOG      ○ Compiling /api/auth/login ...
-[00:04:49.492] Server  LOG      ○ Compiling /cameraman/dashboard ...
-[00:04:54.238] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:54.662] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:06.045] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:06.806] Server  LOG      ✓ Ready in 6.4s
+[00:00:12.567] Server  LOG      ○ Compiling / ...
+[00:00:44.056] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:44.180] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:53.116] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
+[00:00:55.292] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
+[00:00:55.985] Server  LOG      ○ Compiling /login ...
+[00:01:13.817] Server  LOG      ○ Compiling /admin/dashboard ...
+[00:01:32.805] Server  LOG      ○ Compiling /admin/events/new ...
+[00:01:55.557] Server  LOG      ○ Compiling /api/events ...
+[00:03:25.423] Server  LOG      ○ Compiling /api/upload ...
+[00:03:27.526] Server  LOG     [UPLOAD] user: "cmjb2na720001lc8kjfaudv5d" "CAMERAMAN"
+[00:03:27.528] Server  LOG     [UPLOAD] eventId: "cmjbhgj9u0001lcjwt54gdcr8"
+[00:03:27.529] Server  LOG     [UPLOAD] fileType: "RAW"
+[00:03:27.538] Server  LOG     [UPLOAD] event status: "CREATED"
+[00:03:27.539] Server  LOG     [UPLOAD] driveRawId: "1qBjAoRkJFBhtxKVBUH8Qslv7TUVcIhA3"
+[00:03:27.540] Server  LOG     [UPLOAD] driveFinalId: "1yAzJ1q4DmK9dZqhxsfsKprnU0u8asrqd"
+[00:03:27.703] Server  LOG     [UPLOAD] Incoming file candidate: {}
+[00:03:27.708] Server  LOG     [UPLOAD] Incoming file candidate: {}
+[00:03:27.712] Server  LOG     [UPLOAD] Using Drive folder {}
+[00:03:27.714] Server  LOG     [UPLOAD] Processing file {}
+[00:03:31.801] Server  LOG     [UPLOAD] Drive upload successful {}
+[00:03:31.841] Server  LOG     [UPLOAD] DB file record created {}
+[00:03:31.847] Server  LOG     [UPLOAD] Processing file {}
+[00:03:35.585] Server  LOG     [UPLOAD] Drive upload successful {}
+[00:03:35.591] Server  LOG     [UPLOAD] DB file record created {}
+[00:03:46.653] Server  LOG      ○ Compiling /api/events/[id] ...
+[00:04:44.744] Server  LOG      ○ Compiling /editor/dashboard ...
+[00:05:05.477] Server  LOG      ○ Compiling /editor/event/[id] ...
+[00:06:02.284] Server  LOG      ○ Compiling /api/auth/logout ...
+[00:06:15.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:15.583] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -48,28 +65,28 @@ It can also happen if the client has a browser extension installed which messes 
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="qwhm9q"
+-                               fdprocessedid="vu6azf"
                               >
 +                               Admin
                               <button
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="bt8j5dn"
+-                               fdprocessedid="ohn5wn"
                               >
 +                               Cameraman
                               <button
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="bm2x3"
+-                               fdprocessedid="dk2lm5"
                               >
 +                               Editor
                               <button
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="xlz1vu"
+-                               fdprocessedid="fdmrnj"
                               >
 +                               Editor Two
                             ...
@@ -88,7 +105,7 @@ It can also happen if the client has a browser extension installed which messes 
                                       onChange={function onChange}
                                       placeholder="you@company.com"
                                       autoComplete="email"
--                                     fdprocessedid="db6o4"
+-                                     fdprocessedid="zqpduq"
                                     >
                                 <div className="grid gap-2">
                                   <label>
@@ -100,30 +117,152 @@ It can also happen if the client has a browser extension installed which messes 
                                       placeholder="••••••••"
                                       type="password"
                                       autoComplete="current-password"
--                                     fdprocessedid="1nsvgs"
+-                                     fdprocessedid="uiyy6"
                                     >
                                 <Button type="submit" disabled={false}>
                                   <button
                                     className="inline-flex items-center justify-center gap-2 rounded-xl font-medium tr..."
                                     type="submit"
                                     disabled={false}
--                                   fdprocessedid="kmln6"
+-                                   fdprocessedid="70llti"
                                   >
 +                                   Sign in
         ...
       ...
 
-[00:04:56.172] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
-[00:06:09.369] Server  LOG      ○ Compiling /cameraman/event/[id] ...
-[00:07:19.926] Server  LOG     [UPLOAD] user: "cmjb2na720001lc8kjfaudv5d" "CAMERAMAN"
-[00:07:19.928] Server  LOG     [UPLOAD] eventId: "cmjbdtvbz0001lc40epu7u7wq"
-[00:07:19.929] Server  LOG     [UPLOAD] fileType: "RAW"
-[00:07:20.024] Server  LOG     [UPLOAD] event status: "CREATED"
-[00:07:20.026] Server  LOG     [UPLOAD] driveRawId: "1sgxQ1BUJP-VwMGs8QachHI4-LhEuh7jB"
-[00:07:20.026] Server  LOG     [UPLOAD] driveFinalId: "1nEWpbtTvS2RNuhGdo6kGFUN1w6YmG9WQ"
-[00:07:20.056] Server  LOG     [UPLOAD] Incoming file candidate: {}
-[00:07:20.058] Server  LOG     [UPLOAD] Incoming file candidate: {}
-[00:07:20.059] Server  LOG     [UPLOAD] Using Drive folder {}
-[00:07:20.060] Server  LOG     [UPLOAD] Processing file {}
-[00:07:23.559] Server  ERROR   Drive API error while uploading file {}
-[00:07:23.562] Server  ERROR   [UPLOAD] Drive upload failed {}
+[00:06:17.896] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:18.447] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/login?nex..." tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="login/page...">
+          <SegmentTrieNode>
+          <LoginPage>
+            <Suspense fallback={<div>}>
+              <LoginClient>
+                <div className="min-h-dvh ...">
+                  <div className="mx-auto fl...">
+                    <div className="grid w-ful...">
+                      <div className="hidden md:...">
+                        <div>
+                        <h1>
+                        <p>
+                        <div className="mt-6 grid ...">
+                          <div className="rounded-2x...">
+                            <div>
+                            <div className="mt-2 flex ...">
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="xt818"
+                              >
++                               Admin
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="xstmja"
+                              >
++                               Cameraman
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="y1gvqk"
+                              >
++                               Editor
+                              <button
+                                type="button"
+                                className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
+                                onClick={function onClick}
+-                               fdprocessedid="qcn7"
+                              >
++                               Editor Two
+                            ...
+                      <Card className="mx-auto w-...">
+                        <div className="rounded-2x...">
+                          <CardHeader>
+                          <CardContent>
+                            <div className="px-5 pb-5">
+                              <form className="grid gap-4" onSubmit={function onSubmit}>
+                                <div className="grid gap-2">
+                                  <label>
+                                  <Input value="admin@udaa..." onChange={function onChange} placeholder="you@compan..." ...>
+                                    <input
+                                      className="h-10 w-full rounded-xl border border-border bg-surface-2 px-3 text-sm..."
+                                      value="admin@udaan.local"
+                                      onChange={function onChange}
+                                      placeholder="you@company.com"
+                                      autoComplete="email"
+-                                     fdprocessedid="38avmr"
+                                    >
+                                <div className="grid gap-2">
+                                  <label>
+                                  <Input value="password" onChange={function onChange} placeholder="••••••••" ...>
+                                    <input
+                                      className="h-10 w-full rounded-xl border border-border bg-surface-2 px-3 text-sm..."
+                                      value="password"
+                                      onChange={function onChange}
+                                      placeholder="••••••••"
+                                      type="password"
+                                      autoComplete="current-password"
+-                                     fdprocessedid="bej0w"
+                                    >
+                                <Button type="submit" disabled={false}>
+                                  <button
+                                    className="inline-flex items-center justify-center gap-2 rounded-xl font-medium tr..."
+                                    type="submit"
+                                    disabled={false}
+-                                   fdprocessedid="zob96"
+                                  >
++                                   Sign in
+        ...
+      ...
+
+[00:06:23.690] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
+[00:06:27.415] Browser ERROR   unhandledRejection: i: Failed to connect to MetaMask
+[00:06:32.629] Server  LOG      ○ Compiling /editor/events ...
+[00:06:59.947] Server  LOG      ○ Compiling /api/upload ...
+[00:07:04.025] Server  LOG     [UPLOAD] user: "cmjb2na740002lc8k6du82sw9" "EDITOR"
+[00:07:04.026] Server  LOG     [UPLOAD] eventId: "cmjbhgj9u0001lcjwt54gdcr8"
+[00:07:04.027] Server  LOG     [UPLOAD] fileType: "FINAL"
+[00:07:04.030] Server  LOG     [UPLOAD] event status: "ASSIGNED"
+[00:07:04.032] Server  LOG     [UPLOAD] driveRawId: "1qBjAoRkJFBhtxKVBUH8Qslv7TUVcIhA3"
+[00:07:04.033] Server  LOG     [UPLOAD] driveFinalId: "1yAzJ1q4DmK9dZqhxsfsKprnU0u8asrqd"
+[00:07:04.043] Server  WARN    [UPLOAD] Status guard blocked upload {}
+[00:08:37.538] Server  LOG     [UPLOAD] user: "cmjb2na740002lc8k6du82sw9" "EDITOR"
+[00:08:37.542] Server  LOG     [UPLOAD] eventId: "cmjbhgj9u0001lcjwt54gdcr8"
+[00:08:37.544] Server  LOG     [UPLOAD] fileType: "FINAL"
+[00:08:37.680] Server  LOG     [UPLOAD] event status: "ASSIGNED"
+[00:08:37.681] Server  LOG     [UPLOAD] driveRawId: "1qBjAoRkJFBhtxKVBUH8Qslv7TUVcIhA3"
+[00:08:37.682] Server  LOG     [UPLOAD] driveFinalId: "1yAzJ1q4DmK9dZqhxsfsKprnU0u8asrqd"
+[00:08:37.685] Server  WARN    [UPLOAD] Status guard blocked upload {}
+[00:08:51.655] Server  LOG      ○ Compiling /api/events/[id] ...
+[00:09:16.610] Server  LOG     [UPLOAD] user: "cmjb2na740002lc8k6du82sw9" "EDITOR"
+[00:09:16.613] Server  LOG     [UPLOAD] eventId: "cmjbhgj9u0001lcjwt54gdcr8"
+[00:09:16.626] Server  LOG     [UPLOAD] fileType: "FINAL"
+[00:09:16.639] Server  LOG     [UPLOAD] event status: "EDITING"
+[00:09:16.644] Server  LOG     [UPLOAD] driveRawId: "1qBjAoRkJFBhtxKVBUH8Qslv7TUVcIhA3"
+[00:09:16.646] Server  LOG     [UPLOAD] driveFinalId: "1yAzJ1q4DmK9dZqhxsfsKprnU0u8asrqd"
+[00:09:16.819] Server  LOG     [UPLOAD] Incoming file candidate: {}
+[00:09:16.821] Server  LOG     [UPLOAD] Incoming file candidate: {}
+[00:09:16.823] Server  LOG     [UPLOAD] Using Drive folder {}
+[00:09:16.825] Server  LOG     [UPLOAD] Processing file {}
+[00:09:21.287] Server  LOG     [UPLOAD] Drive upload successful {}
+[00:09:21.321] Server  LOG     [UPLOAD] DB file record created {}
+[00:09:21.323] Server  LOG     [UPLOAD] Processing file {}
+[00:09:24.762] Server  LOG     [UPLOAD] Drive upload successful {}
+[00:09:24.768] Server  LOG     [UPLOAD] DB file record created {}
+[00:14:53.978] Server  LOG        Reload env: .env

@@ -1,8 +1,7 @@
 {
-  "/api/upload/route": "app/api/upload/route.js",
   "/login/page": "app/login/page.js",
-  "/cameraman/dashboard/page": "app/cameraman/dashboard/page.js",
-  "/admin/events/[id]/page": "app/admin/events/[id]/page.js",
-  "/admin/events/new/page": "app/admin/events/new/page.js",
-  "/cameraman/event/[id]/page": "app/cameraman/event/[id]/page.js"
+  "/editor/dashboard/page": "app/editor/dashboard/page.js",
+  "/cameraman/event/[id]/page": "app/cameraman/event/[id]/page.js",
+  "/editor/event/[id]/page": "app/editor/event/[id]/page.js",
+  "/editor/events/page": "app/editor/events/page.js"
 }
