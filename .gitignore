@@ -1,8 +1,8 @@
-.env
+
 node_modules
+.env
 uploads/
 tmp/
 /public/uploads
 /public/tmp
-.env
-.env
+

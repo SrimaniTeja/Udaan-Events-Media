@@ -5,6 +5,7 @@ import type { Notification, NotificationType } from "@/lib/notifications";
 import { prisma } from "@/lib/db/prisma";
 import { canTransition } from "@/lib/workflow";
 import { mapEvent, mapFile, mapNotification, mapSessionUser, mapUser } from "@/lib/db/mappers";
+import { createEventFolders } from "@/lib/googleDrive";
 
 export async function listUsers(role?: UserRole): Promise<User[]> {
   const users = await prisma.user.findMany({
@@ -59,16 +60,33 @@ export async function createEvent(input: {
   cameramanId: string;
   editorId: string | null;
 }): Promise<Event> {
-  const event = await prisma.event.create({
-    data: {
-      name: input.name,
-      date: new Date(input.date),
-      cameramanId: input.cameramanId,
-      editorId: input.editorId ?? null,
-      status: "CREATED",
-    },
+  return prisma.$transaction(async (tx: any) => {
+    // First create the bare event to obtain a stable ID.
+    const event = await tx.event.create({
+      data: {
+        name: input.name,
+        date: new Date(input.date),
+        cameramanId: input.cameramanId,
+        editorId: input.editorId ?? null,
+        status: "CREATED",
+      },
+    });
+
+    // Then create the Google Drive folder structure. Any failure will cause the transaction to roll back.
+    const folders = await createEventFolders(event.id, event.name);
+
+    const updated = await tx.event.update({
+      where: { id: event.id },
+      data: {
+        driveRootId: folders.rootId,
+        driveRawId: folders.rawId,
+        driveEditedId: folders.editedId,
+        driveFinalId: folders.finalId,
+      },
+    });
+
+    return mapEvent(updated);
   });
-  return mapEvent(event);
 }
 
 export async function transitionEvent(eventId: string, nextStatus: EventStatus): Promise<Event | null> {
@@ -132,6 +150,7 @@ export async function addFile(params: {
   name: string;
   size: number;
   mimeType: string;
+  driveFileId?: string | null;
 }): Promise<MediaFile> {
   const f = await prisma.file.create({
     data: {
@@ -141,7 +160,7 @@ export async function addFile(params: {
       name: params.name,
       size: params.size,
       mimeType: params.mimeType,
-      driveFileId: null,
+      driveFileId: params.driveFileId ?? null,
     },
   });
   return mapFile(f);

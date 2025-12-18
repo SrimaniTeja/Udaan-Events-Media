@@ -29,8 +29,7 @@ export function canUploadFile(params: {
   const { role, fileType, status } = params;
 
   if (role === "CAMERAMAN" && fileType === "RAW") return status === "CREATED";
-  if (role === "EDITOR" && fileType === "FINAL")
-    return status === "EDITING" || status === "ASSIGNED";
+  if (role === "EDITOR" && fileType === "FINAL") return status === "EDITING";
 
   return false;
 }

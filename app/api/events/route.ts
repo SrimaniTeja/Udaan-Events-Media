@@ -31,8 +31,15 @@ export async function POST(req: Request) {
   if (!cameramanId)
     return NextResponse.json({ error: "Cameraman is required" }, { status: 400 });
 
-  const event = await createEvent({ name, date, cameramanId, editorId });
-  return NextResponse.json({ event }, { status: 201 });
+  try {
+    const event = await createEvent({ name, date, cameramanId, editorId });
+    return NextResponse.json({ event }, { status: 201 });
+  } catch (e) {
+    console.error("Failed to create event with Drive folders", e);
+    return NextResponse.json(
+      { error: "Failed to create event folders in Drive. Please try again." },
+      { status: 500 },
+    );
+  }
 }
-
 

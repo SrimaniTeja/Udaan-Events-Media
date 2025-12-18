@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
+import { Readable } from "node:stream";
 import { getSessionUser } from "@/lib/auth/session";
 import { getEventById, getFileById } from "@/lib/db/store";
+import { downloadFileStream } from "@/lib/googleDrive";
 
 // Helper to get file extension from filename or MIME type
 function getFileExtension(filename: string, mimeType: string): string {
@@ -42,26 +44,31 @@ export async function GET(req: Request) {
     (user.role === "EDITOR" && event.editorId === user.id);
   if (!canAccess) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
+  if (!f.driveFileId) {
+    return NextResponse.json(
+      { error: "Drive file is not linked for this record. Please contact an administrator." },
+      { status: 500 },
+    );
+  }
+
   // Use stored MIME type, fallback to application/octet-stream
   const mimeType = f.mimeType || "application/octet-stream";
   const extension = getFileExtension(f.name, mimeType);
-  
+
   // Ensure filename has correct extension
   let downloadFilename = f.name;
   if (!downloadFilename.toLowerCase().endsWith(extension.toLowerCase())) {
     downloadFilename = downloadFilename + extension;
   }
 
-  // Mock content (will be replaced with Drive streaming later)
-  const content = `Mock download for ${f.name}\n(Drive streaming will be wired later)\n`;
+  const nodeStream = await downloadFileStream(f.driveFileId);
+  const webStream = Readable.toWeb(nodeStream as any) as ReadableStream;
 
-  return new NextResponse(content, {
+  return new Response(webStream, {
     headers: {
       "Content-Type": mimeType,
       "Content-Disposition": `attachment; filename="${encodeURIComponent(downloadFilename)}"`,
     },
   });
-
 }
-
 
