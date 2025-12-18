@@ -1,4 +1,4 @@
+.env
 node_modules
-env.local
-env
-.next/dev/lock
+uploads/
+tmp/
