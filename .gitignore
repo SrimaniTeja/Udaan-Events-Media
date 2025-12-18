@@ -6,3 +6,4 @@ tmp/
 /public/uploads
 /public/tmp
 
+.next/dev/lock
