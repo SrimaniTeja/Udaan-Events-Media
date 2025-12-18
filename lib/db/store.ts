@@ -131,6 +131,7 @@ export async function addFile(params: {
   fileType: FileType;
   name: string;
   size: number;
+  mimeType: string;
 }): Promise<MediaFile> {
   const f = await prisma.file.create({
     data: {
@@ -139,6 +140,7 @@ export async function addFile(params: {
       fileType: params.fileType,
       name: params.name,
       size: params.size,
+      mimeType: params.mimeType,
       driveFileId: null,
     },
   });

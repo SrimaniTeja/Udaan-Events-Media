@@ -1,4 +1,4 @@
-// File: C:\Users\mteja\OneDrive\Desktop\Udaan-Events-Media\app\api\auth\logout\route.ts
+// File: C:\Users\gadep\OneDrive\Desktop\Udaan-Events-Media\app\api\auth\logout\route.ts
 import * as entry from '../../../../../../../app/api/auth/logout/route.js'
 import type { NextRequest } from 'next/server.js'
 

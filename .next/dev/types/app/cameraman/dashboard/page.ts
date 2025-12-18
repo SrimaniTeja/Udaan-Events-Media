@@ -1,10 +1,10 @@
-// File: C:\Users\mteja\OneDrive\Desktop\Udaan-Events-Media\app\admin\events\page.tsx
-import * as entry from '../../../../../../app/admin/events/page.js'
+// File: C:\Users\gadep\OneDrive\Desktop\Udaan-Events-Media\app\cameraman\dashboard\page.tsx
+import * as entry from '../../../../../../app/cameraman/dashboard/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
 import type { PrefetchForTypeCheckInternal } from 'next/dist/build/segment-config/app/app-segment-config.js'
 
-type TEntry = typeof import('../../../../../../app/admin/events/page.js')
+type TEntry = typeof import('../../../../../../app/cameraman/dashboard/page.js')
 
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }

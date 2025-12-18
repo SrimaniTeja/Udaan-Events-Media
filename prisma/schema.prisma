@@ -52,6 +52,7 @@ model File {
   eventId     String
   fileType    String
   name        String
+  mimeType    String
   driveFileId String?
   uploaderId  String
   size        Int

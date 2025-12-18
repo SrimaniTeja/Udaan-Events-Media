@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth/session";
 import { addFile, autoAssignFreeEditor, createNotification, getEventById, transitionEvent } from "@/lib/db/store";
 import { canUploadFile } from "@/lib/workflow";
+import { validateFile } from "@/lib/validation";
 import type { FileType } from "@/lib/types";
 
 export async function POST(req: Request) {
@@ -34,16 +35,39 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "No files provided (use form field name 'files')" }, { status: 400 });
   }
 
-  const created = [];
+  // Validate all files before processing
+  const validationErrors: string[] = [];
+  const validFiles: File[] = [];
+
   for (const part of incoming) {
     if (!(part instanceof File)) continue;
+    const validation = validateFile(part, fileType);
+    if (!validation.valid) {
+      validationErrors.push(`${part.name}: ${validation.error}`);
+    } else {
+      validFiles.push(part);
+    }
+  }
+
+  // If any validation fails, return error without saving anything
+  if (validationErrors.length > 0) {
+    return NextResponse.json(
+      { error: `Validation failed:\n${validationErrors.join("\n")}` },
+      { status: 400 },
+    );
+  }
+
+  // All files are valid, proceed with metadata storage
+  const created = [];
+  for (const file of validFiles) {
     created.push(
       await addFile({
         eventId,
         uploadedBy: user.id,
         fileType,
-        name: part.name || "upload.bin",
-        size: part.size,
+        name: file.name || "upload.bin",
+        size: file.size,
+        mimeType: file.type || "application/octet-stream",
       }),
     );
   }

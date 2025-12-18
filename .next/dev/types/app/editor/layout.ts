@@ -1,4 +1,4 @@
-// File: C:\Users\mteja\OneDrive\Desktop\Udaan-Events-Media\app\editor\layout.tsx
+// File: C:\Users\gadep\OneDrive\Desktop\Udaan-Events-Media\app\editor\layout.tsx
 import * as entry from '../../../../../app/editor/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

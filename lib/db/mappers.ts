@@ -33,6 +33,7 @@ type DbFile = {
   size: number;
   createdAt: Date;
   name: string;
+  mimeType: string;
 };
 
 type DbNotification = {
@@ -85,6 +86,7 @@ export function mapFile(f: DbFile): MediaFile {
     size: f.size,
     timestamp: f.createdAt.toISOString(),
     name: f.name,
+    mimeType: f.mimeType,
   };
 }
 

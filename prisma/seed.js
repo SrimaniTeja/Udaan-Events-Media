@@ -63,6 +63,7 @@ async function main() {
         eventId: ev1.id,
         fileType: "RAW",
         name: "DSC_0001.MP4",
+        mimeType: "video/mp4",
         driveFileId: null,
         uploaderId: cam.id,
         size: 12_400_000,

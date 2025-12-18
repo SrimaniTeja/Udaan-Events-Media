@@ -40,6 +40,7 @@ export interface MediaFile {
   size: number;
   timestamp: string; // ISO string
   name: string;
+  mimeType: string;
 }
 
 export type SessionUser = Pick<User, "id" | "name" | "email" | "role">;

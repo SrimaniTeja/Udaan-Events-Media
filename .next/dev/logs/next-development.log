@@ -1,7 +1,9 @@
-[00:00:01.978] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:02.140] Server  LOG      ✓ Ready in 1833ms
-[00:00:10.505] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:10.722] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:06.392] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:08.406] Server  LOG      ✓ Ready in 7.9s
+[00:00:14.369] Server  LOG      ○ Compiling /login ...
+[00:00:21.605] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:21.614] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:21.834] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -15,7 +17,7 @@ It can also happen if the client has a browser extension installed which messes 
 
   ...
     <RedirectErrorBoundary router={{...}}>
-      <InnerLayoutRouter url="/login?nex..." tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+      <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
         <SegmentViewNode type="page" pagePath="login/page...">
           <SegmentTrieNode>
           <LoginPage>
@@ -36,28 +38,28 @@ It can also happen if the client has a browser extension installed which messes 
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="zvfogu"
+-                               fdprocessedid="kv3jsn"
                               >
 +                               Admin
                               <button
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="dvr72i"
+-                               fdprocessedid="jeivej"
                               >
 +                               Cameraman
                               <button
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="tc809n"
+-                               fdprocessedid="koadou"
                               >
 +                               Editor
                               <button
                                 type="button"
                                 className="rounded-full border border-border bg-surface-2 px-3 py-1.5 text-xs text-mut..."
                                 onClick={function onClick}
--                               fdprocessedid="c2pz1a"
+-                               fdprocessedid="bopreb"
                               >
 +                               Editor Two
                             ...
@@ -76,7 +78,7 @@ It can also happen if the client has a browser extension installed which messes 
                                       onChange={function onChange}
                                       placeholder="you@company.com"
                                       autoComplete="email"
--                                     fdprocessedid="jqx00q"
+-                                     fdprocessedid="0mnp2k"
                                     >
                                 <div className="grid gap-2">
                                   <label>
@@ -88,40 +90,20 @@ It can also happen if the client has a browser extension installed which messes 
                                       placeholder="••••••••"
                                       type="password"
                                       autoComplete="current-password"
--                                     fdprocessedid="31gdhb"
+-                                     fdprocessedid="evo7k6"
                                     >
                                 <Button type="submit" disabled={false}>
                                   <button
                                     className="inline-flex items-center justify-center gap-2 rounded-xl font-medium tr..."
                                     type="submit"
                                     disabled={false}
--                                   fdprocessedid="wdyxk9"
+-                                   fdprocessedid="mzvbtd"
                                   >
 +                                   Sign in
         ...
       ...
 
-[00:00:19.266] Browser DEBUG   TSS: Counted history being pushed
-[00:00:19.266] Browser DEBUG   TSS: Caught history
-[00:00:19.266] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
-[00:00:28.535] Browser DEBUG   TSS: Counted history being pushed
-[00:00:28.535] Browser DEBUG   TSS: Caught history
-[00:00:28.535] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765974840565}
-[00:00:28.883] Browser DEBUG   TSS: Counted history being replaced
-[00:00:28.883] Browser DEBUG   TSS: Caught history
-[00:00:28.884] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765974849830}
-[00:00:35.731] Browser DEBUG   TSS: Counted history being pushed
-[00:00:35.731] Browser DEBUG   TSS: Caught history
-[00:00:35.731] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":2,"lastTime":1765974849830}
-[00:00:36.968] Browser DEBUG   TSS: Counted history being pushed
-[00:00:36.968] Browser DEBUG   TSS: Caught history
-[00:00:36.969] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765974857024}
-[00:01:00.012] Browser DEBUG   TSS: Counted history being pushed
-[00:01:00.012] Browser DEBUG   TSS: Caught history
-[00:01:00.012] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765974858264}
-[00:01:09.605] Browser DEBUG   TSS: Counted history being pushed
-[00:01:09.605] Browser DEBUG   TSS: Caught history
-[00:01:09.605] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765974881302}
-[00:01:16.435] Browser DEBUG   TSS: Counted history being replaced
-[00:01:16.435] Browser DEBUG   TSS: Caught history
-[00:01:16.435] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1765974890899}
+[00:00:26.763] Server  LOG      ○ Compiling /api/auth/login ...
+[00:01:34.785] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:37.316] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:59.459] Server  LOG      ○ Compiling /editor/dashboard ...
