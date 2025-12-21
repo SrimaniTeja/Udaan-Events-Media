@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     // Prevent Next.js from inferring the wrong workspace root when multiple lockfiles exist.
     root: configDir,
   },
+  experimental: {
+    proxyClientMaxBodySize: '50gb',
+  }
 };
 
 export default nextConfig;

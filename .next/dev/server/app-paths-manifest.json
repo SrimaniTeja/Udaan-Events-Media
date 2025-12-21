@@ -1,7 +1,4 @@
 {
-  "/login/page": "app/login/page.js",
-  "/editor/dashboard/page": "app/editor/dashboard/page.js",
-  "/cameraman/event/[id]/page": "app/cameraman/event/[id]/page.js",
-  "/editor/event/[id]/page": "app/editor/event/[id]/page.js",
-  "/editor/events/page": "app/editor/events/page.js"
+  "/api/upload/route": "app/api/upload/route.js",
+  "/cameraman/event/[id]/page": "app/cameraman/event/[id]/page.js"
 }

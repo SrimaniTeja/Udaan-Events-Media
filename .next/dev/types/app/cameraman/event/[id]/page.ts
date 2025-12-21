@@ -1,4 +1,4 @@
-// File: C:\Users\gadep\OneDrive\Desktop\Udaan-Events-Media\app\cameraman\event\[id]\page.tsx
+// File: C:\Users\mteja\OneDrive\Desktop\Udaan-Events-Media\app\cameraman\event\[id]\page.tsx
 import * as entry from '../../../../../../../app/cameraman/event/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
