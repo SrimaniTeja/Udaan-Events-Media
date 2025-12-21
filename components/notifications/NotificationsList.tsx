@@ -9,8 +9,17 @@ import { Button } from "@/components/ui/Button";
 
 export function NotificationsList() {
   const router = useRouter();
+  const pathname = usePathname();
   const [items, setItems] = React.useState<Notification[]>([]);
   const [loading, setLoading] = React.useState(true);
+
+  // Determine event route based on current path
+  const getEventRoute = (eventId: string) => {
+    if (pathname?.startsWith("/admin")) return `/admin/events/${eventId}`;
+    if (pathname?.startsWith("/cameraman")) return `/cameraman/event/${eventId}`;
+    if (pathname?.startsWith("/editor")) return `/editor/event/${eventId}`;
+    return `/admin/events/${eventId}`; // fallback
+  };
 
   async function load() {
     setLoading(true);
@@ -62,9 +71,11 @@ export function NotificationsList() {
                 <div className="mt-1 text-sm text-muted-foreground">{n.message}</div>
                 {n.eventId ? (
                   <div className="mt-2 text-xs text-muted-foreground">
-                    Event:{" "}
-                    <Link href="#" className="text-primary hover:underline">
-                      {n.eventId}
+                    <Link
+                      href={getEventRoute(n.eventId)}
+                      className="text-primary hover:underline"
+                    >
+                      View event →
                     </Link>
                   </div>
                 ) : null}

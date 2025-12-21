@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { LinkButton } from "@/components/ui/LinkButton";
 import { StatusBadge } from "@/components/event/StatusBadge";
 import { EventTimeline } from "@/components/event/EventTimeline";
 import { FileDropzone } from "@/components/upload/FileDropzone";
@@ -31,13 +30,13 @@ export default async function EditorEventPage({ params }: { params: Promise<{ id
         </div>
         <div className="flex flex-wrap gap-2">
           {event.status === "ASSIGNED" ? (
-            <EventStatusActionButton eventId={event.id} nextStatus="EDITING" variant="secondary">
-              Start Editing
+            <EventStatusActionButton eventId={event.id} nextStatus="EDITING" variant="primary">
+              ✏️ Start Editing
             </EventStatusActionButton>
           ) : null}
           {event.status === "FINAL_UPLOADED" ? (
             <EventStatusActionButton eventId={event.id} nextStatus="COMPLETED">
-              Mark Completed
+              ✓ Mark Completed
             </EventStatusActionButton>
           ) : null}
         </div>

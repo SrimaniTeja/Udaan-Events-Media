@@ -31,7 +31,7 @@ export function EventStatusActionButton({
   }
 
   return (
-    <Button onClick={run} disabled={busy} variant={variant}>
+    <Button onClick={run} disabled={busy} variant={variant} className="min-w-[140px]">
       {busy ? "Working…" : children}
     </Button>
   );

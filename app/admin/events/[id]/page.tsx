@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/event/StatusBadge";
@@ -49,6 +50,7 @@ export default async function AdminEventDetailsPage({
                       <th className="py-2 text-left font-medium">Type</th>
                       <th className="py-2 text-left font-medium">Size</th>
                       <th className="py-2 text-left font-medium">Uploaded</th>
+                      <th className="py-2 text-right font-medium">Download</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,6 +60,14 @@ export default async function AdminEventDetailsPage({
                         <td className="py-3 text-muted-foreground">{f.fileType}</td>
                         <td className="py-3 text-muted-foreground">{formatBytes(f.size)}</td>
                         <td className="py-3 text-muted-foreground">{formatDate(f.timestamp)}</td>
+                        <td className="py-3 text-right">
+                          <Link
+                            href={`/api/download?fileId=${encodeURIComponent(f.id)}`}
+                            className="text-sm text-primary hover:underline"
+                          >
+                            Download
+                          </Link>
+                        </td>
                       </tr>
                     ))}
                   </tbody>

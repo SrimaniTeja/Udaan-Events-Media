@@ -195,6 +195,16 @@ export async function POST(req: Request) {
   try {
     if (fileType === "RAW" && event.status === "CREATED") {
       await transitionEvent(eventId, "RAW_UPLOADED");
+      
+      // Notify admin that RAW media has been uploaded
+      await createNotificationsForRole({
+        role: "ADMIN",
+        type: "RAW_UPLOADED",
+        eventId,
+        title: "RAW media uploaded",
+        message: `Cameraman uploaded RAW media for "${event.name}".`,
+      });
+      
       // Auto-assign a free editor (if available) and notify them.
       const updated = (await autoAssignFreeEditor(eventId)) ?? event;
       if (updated.editorId) {
@@ -208,9 +218,10 @@ export async function POST(req: Request) {
         });
       }
     }
-    if (fileType === "FINAL" && event.status === "EDITING") {
+    if (fileType === "FINAL" && (event.status === "ASSIGNED" || event.status === "EDITING")) {
       await transitionEvent(eventId, "FINAL_UPLOADED");
-      // Notify admins that FINAL media is available.
+      
+      // Notify admin that FINAL media is available
       await createNotificationsForRole({
         role: "ADMIN",
         type: "FINAL_UPLOADED",
@@ -218,6 +229,17 @@ export async function POST(req: Request) {
         title: "FINAL media uploaded",
         message: `Editor uploaded FINAL output for "${event.name}".`,
       });
+      
+      // Notify cameraman that FINAL media is ready
+      if (event.cameramanId) {
+        await createNotification({
+          userId: event.cameramanId,
+          type: "FINAL_UPLOADED",
+          eventId,
+          title: "FINAL media ready",
+          message: `Editor uploaded FINAL output for "${event.name}".`,
+        });
+      }
     }
   } catch (e) {
     console.error("[UPLOAD] Failed to update workflow status or notifications", e);

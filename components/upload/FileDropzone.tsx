@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import type { FileType } from "@/lib/types";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
-import { getAllowedMimeTypes } from "@/lib/validation";
+import { getAllowedMimeTypes, validateFile } from "@/lib/validation";
 
 export function FileDropzone({
   eventId,
@@ -24,35 +24,21 @@ export function FileDropzone({
 
   const allowedMimeTypes = React.useMemo(() => getAllowedMimeTypes(fileType), [fileType]);
   const acceptAttr = React.useMemo(() => {
-    // Convert MIME types to accept attribute format
+    // For RAW uploads, allow any file (empty string = accept all)
+    // For FINAL uploads, use strict MIME types
+    if (fileType === "RAW") return ""; // Allow all file types
     return allowedMimeTypes.join(",");
-  }, [allowedMimeTypes]);
+  }, [allowedMimeTypes, fileType]);
 
   function validateFiles(files: File[]): string | null {
     if (files.length === 0) return "No files selected";
 
     const errors: string[] = [];
-    const MAX_IMAGE_SIZE = 50 * 1024 * 1024; // 50 MB
-    const MAX_VIDEO_SIZE = 10 * 1024 * 1024 * 1024; // 10 GB
 
     for (const file of files) {
-      // Check MIME type
-      if (!allowedMimeTypes.includes(file.type)) {
-        errors.push(`${file.name}: Invalid file type. Allowed: ${allowedMimeTypes.join(", ")}`);
-        continue;
-      }
-
-      // Check file size
-      const isImage = file.type.startsWith("image/");
-      const isVideo = file.type.startsWith("video/");
-      const maxSize = isImage ? MAX_IMAGE_SIZE : isVideo ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
-
-      if (file.size > maxSize) {
-        const maxSizeMB = Math.round(maxSize / (1024 * 1024));
-        const fileSizeMB = Math.round(file.size / (1024 * 1024));
-        errors.push(
-          `${file.name}: File size (${fileSizeMB} MB) exceeds maximum (${maxSizeMB} MB) for ${isImage ? "images" : "videos"}`,
-        );
+      const validation = validateFile(file, fileType);
+      if (!validation.valid) {
+        errors.push(`${file.name}: ${validation.error}`);
       }
     }
 
@@ -143,7 +129,7 @@ export function FileDropzone({
           className="hidden"
           type="file"
           multiple
-          accept={acceptAttr}
+          {...(acceptAttr ? { accept: acceptAttr } : {})}
           onChange={(e) => {
             const files = Array.from(e.target.files ?? []);
             void upload(files);

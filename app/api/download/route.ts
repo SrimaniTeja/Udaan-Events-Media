@@ -15,10 +15,27 @@ function getFileExtension(filename: string, mimeType: string): string {
   // Fallback to MIME type mapping
   const mimeToExt: Record<string, string> = {
     "image/jpeg": ".jpg",
+    "image/jpg": ".jpg",
     "image/png": ".png",
     "image/heic": ".heic",
+    "image/heif": ".heif",
+    "image/gif": ".gif",
+    "image/webp": ".webp",
+    "image/tiff": ".tiff",
+    "image/bmp": ".bmp",
     "video/mp4": ".mp4",
     "video/quicktime": ".mov",
+    "video/x-msvideo": ".avi",
+    "video/x-matroska": ".mkv",
+    "video/webm": ".webm",
+    "video/x-flv": ".flv",
+    "video/mpeg": ".mpeg",
+    "video/x-ms-wmv": ".wmv",
+    "audio/mpeg": ".mp3",
+    "audio/wav": ".wav",
+    "audio/x-m4a": ".m4a",
+    "audio/ogg": ".ogg",
+    "audio/aac": ".aac",
   };
 
   return mimeToExt[mimeType] || ".bin";

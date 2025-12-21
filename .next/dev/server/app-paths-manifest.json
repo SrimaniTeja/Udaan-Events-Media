@@ -1,4 +1,3 @@
 {
-  "/api/upload/route": "app/api/upload/route.js",
   "/cameraman/event/[id]/page": "app/cameraman/event/[id]/page.js"
 }

@@ -1,35 +1,4 @@
-[00:00:02.004] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:02.192] Server  LOG      ✓ Ready in 1877ms
-[00:00:10.011] Server  LOG      ○ Compiling /cameraman/event/[id] ...
-[00:00:16.701] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:23.009] Server  LOG     [UPLOAD] user: "cmjfqq66r0001qkk4m8m0gz6z" "CAMERAMAN"
-[00:00:23.010] Server  LOG     [UPLOAD] eventId: "cmjfqsvjy0001qk6gg4at4ahl"
-[00:00:23.010] Server  LOG     [UPLOAD] fileType: "RAW"
-[00:00:23.077] Server  LOG     [UPLOAD] event status: "CREATED"
-[00:00:23.078] Server  LOG     [UPLOAD] driveRawId: "1PmNZ2Ci610qRKFhGBUElw4YuQ8-Jp16t"
-[00:00:23.078] Server  LOG     [UPLOAD] driveFinalId: "1JpSN8urm-3ZK_RRs5Fnx5bqel_5ypc6E"
-[00:00:23.146] Server  LOG     [UPLOAD] Incoming file candidate: {}
-[00:00:23.147] Server  LOG     [UPLOAD] Using Drive folder {}
-[00:00:23.147] Server  LOG     [UPLOAD] Processing file {}
-[00:00:23.891] Browser DEBUG   TSS: Counted history being replaced
-[00:00:23.891] Browser DEBUG   TSS: Caught history
-[00:00:23.891] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {}
-[00:00:39.002] Server  LOG     [UPLOAD] Drive upload successful {}
-[00:00:39.014] Server  LOG     [UPLOAD] DB file record created {}
-[00:00:39.462] Browser DEBUG   TSS: Counted history being replaced
-[00:00:39.462] Browser DEBUG   TSS: Caught history
-[00:00:39.462] Browser DEBUG   TSS: Checking if repeated 500 times for interval 1000 against data:  {"lastCount":1,"lastTime":1766323212750}
-[00:03:04.778] Server  LOG     [UPLOAD] user: "cmjfqq66r0001qkk4m8m0gz6z" "CAMERAMAN"
-[00:03:04.780] Server  LOG     [UPLOAD] eventId: "cmjfqsvjy0001qk6gg4at4ahl"
-[00:03:04.781] Server  LOG     [UPLOAD] fileType: "RAW"
-[00:03:04.878] Server  LOG     [UPLOAD] event status: "ASSIGNED"
-[00:03:04.879] Server  LOG     [UPLOAD] driveRawId: "1PmNZ2Ci610qRKFhGBUElw4YuQ8-Jp16t"
-[00:03:04.879] Server  LOG     [UPLOAD] driveFinalId: "1JpSN8urm-3ZK_RRs5Fnx5bqel_5ypc6E"
-[00:03:04.886] Server  WARN    [UPLOAD] Status guard blocked upload {}
-[00:04:26.352] Server  LOG     [UPLOAD] user: "cmjfqq66r0001qkk4m8m0gz6z" "CAMERAMAN"
-[00:04:26.352] Server  LOG     [UPLOAD] eventId: "cmjfqsvjy0001qk6gg4at4ahl"
-[00:04:26.353] Server  LOG     [UPLOAD] fileType: "RAW"
-[00:04:26.358] Server  LOG     [UPLOAD] event status: "ASSIGNED"
-[00:04:26.358] Server  LOG     [UPLOAD] driveRawId: "1PmNZ2Ci610qRKFhGBUElw4YuQ8-Jp16t"
-[00:04:26.359] Server  LOG     [UPLOAD] driveFinalId: "1JpSN8urm-3ZK_RRs5Fnx5bqel_5ypc6E"
-[00:04:26.362] Server  WARN    [UPLOAD] Status guard blocked upload {}
+[00:00:04.351] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:04.668] Server  LOG      ✓ Ready in 4.2s
+[00:00:09.304] Server  LOG      ○ Compiling /cameraman/event/[id] ...
+[00:00:27.229] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

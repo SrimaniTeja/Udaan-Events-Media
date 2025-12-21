@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth/session";
-import { createEvent, listEventsForUser } from "@/lib/db/store";
+import { createEvent, createNotification, listEventsForUser } from "@/lib/db/store";
 
 export async function GET() {
   const user = await getSessionUser();
@@ -33,6 +33,29 @@ export async function POST(req: Request) {
 
   try {
     const event = await createEvent({ name, date, cameramanId, editorId });
+    
+    // Notify cameraman about new event assignment
+    if (cameramanId) {
+      await createNotification({
+        userId: cameramanId,
+        type: "EVENT_ASSIGNED",
+        eventId: event.id,
+        title: "New event assigned",
+        message: `You have been assigned to event "${event.name}". Please upload RAW media when ready.`,
+      });
+    }
+
+    // Notify editor if assigned at creation
+    if (editorId) {
+      await createNotification({
+        userId: editorId,
+        type: "EVENT_ASSIGNED",
+        eventId: event.id,
+        title: "Event assigned to you",
+        message: `You have been assigned as editor for "${event.name}".`,
+      });
+    }
+
     return NextResponse.json({ event }, { status: 201 });
   } catch (e) {
     console.error("Failed to create event with Drive folders", e);

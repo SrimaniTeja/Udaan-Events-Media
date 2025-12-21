@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     root: configDir,
   },
   experimental: {
-    proxyClientMaxBodySize: '50gb',
+    proxyClientMaxBodySize: '64gb',
   }
 };
 
